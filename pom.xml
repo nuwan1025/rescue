@@ -12,7 +12,7 @@
     <artifactId>rescue</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>rescue</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Incident Management System</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -25,12 +25,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

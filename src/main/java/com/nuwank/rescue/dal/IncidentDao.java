@@ -14,5 +14,5 @@ public interface IncidentDao {
      * @return incident id
      * @throws IncidentDaoException if exception occured while saving
      */
-    int save(Incident incident) throws IncidentDaoException;
+    String save(Incident incident) throws IncidentDaoException;
 }

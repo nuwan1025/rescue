@@ -1,6 +1,10 @@
 package com.nuwank.rescue.dal;
 
 import com.nuwank.rescue.pojo.Incident;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface IncidentRepository extends CrudRepository<Incident, Integer> {}
+/**
+ * Mongo repository used for querying mongo db
+ */
+public interface IncidentRepository extends MongoRepository<Incident, String> {
+}

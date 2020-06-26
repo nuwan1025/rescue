@@ -15,7 +15,5 @@ public interface IncidentAcceptor {
      *
      * @return saves the incident's id
      */
-    Integer saveIncident(Incident incident) throws IncidentAcceptorException;
-
-    void validateIncidents();
+    String saveIncident(Incident incident) throws IncidentAcceptorException;
 }

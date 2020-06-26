@@ -2,37 +2,32 @@ package com.nuwank.rescue.pojo;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Pojo object for Incident
  */
-@Entity
+@Document(collection = "incidents")
 public class Incident {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column
-    private int id;
-
-    @Column
+    private String id;
     private String description;
-
-    @Column
     private String location;
-
-    @Column
     private String tags;
+    private LocalDateTime incidentTime;
+    private List<Requirement> requirementList;
+    private IncidentStatus incidentStatus;
 
-    @Column
-    private int userId;
+    private int reporterId;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -60,12 +55,36 @@ public class Incident {
         this.tags = tags;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getReporterId() {
+        return reporterId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setReporterId(int reporterId) {
+        this.reporterId = reporterId;
+    }
+
+    public LocalDateTime getIncidentTime() {
+        return incidentTime;
+    }
+
+    public void setIncidentTime(LocalDateTime incidentTime) {
+        this.incidentTime = incidentTime;
+    }
+
+    public List<Requirement> getRequirementList() {
+        return requirementList;
+    }
+
+    public void setRequirementList(List<Requirement> requirementList) {
+        this.requirementList = requirementList;
+    }
+
+    public IncidentStatus getIncidentStatus() {
+        return incidentStatus;
+    }
+
+    public void setIncidentStatus(IncidentStatus incidentStatus) {
+        this.incidentStatus = incidentStatus;
     }
 
     @Override
@@ -78,7 +97,7 @@ public class Incident {
 
         return new EqualsBuilder()
                 .append(id, incident.id)
-                .append(userId, incident.userId)
+                .append(reporterId, incident.reporterId)
                 .append(description, incident.description)
                 .append(location, incident.location)
                 .append(tags, incident.tags)
@@ -92,7 +111,17 @@ public class Incident {
                 .append(description)
                 .append(location)
                 .append(tags)
-                .append(userId)
+                .append(reporterId)
                 .toHashCode();
+    }
+
+    public Incident(InputIncident inputIncident) {
+        this.id = UUID.randomUUID().toString();
+        this.description = inputIncident.getDescription();
+        this.location = inputIncident.getDescription();
+        this.tags = inputIncident.getTags();
+        this.incidentTime = inputIncident.getIncidentTime();
+        this.reporterId = inputIncident.getReporterId();
+        this.requirementList = inputIncident.getRequirementList();
     }
 }

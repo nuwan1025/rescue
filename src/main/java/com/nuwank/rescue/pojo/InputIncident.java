@@ -1,22 +1,18 @@
 package com.nuwank.rescue.pojo;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
- * Pojo object for Incident
+ * Pojo object for input Incident
  */
 public class InputIncident {
-    private int id;
     private String description;
     private String location;
     private String tags;
     private int reporterId;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private LocalDateTime incidentTime;
+    private List<Requirement> requirementList;
 
     public String getDescription() {
         return description;
@@ -48,5 +44,21 @@ public class InputIncident {
 
     public void setReporterId(int reporterId) {
         this.reporterId = reporterId;
+    }
+
+    public LocalDateTime getIncidentTime() {
+        return incidentTime;
+    }
+
+    public void setIncidentTime(LocalDateTime incidentTime) {
+        this.incidentTime = incidentTime;
+    }
+
+    public List<Requirement> getRequirementList() {
+        return requirementList;
+    }
+
+    public void setRequirementList(List<Requirement> requirementList) {
+        this.requirementList = requirementList;
     }
 }
